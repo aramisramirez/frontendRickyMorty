@@ -1,0 +1,113 @@
+<div class="container">
+  <div class="row justify-content-center mt-5">
+
+
+    <!-- <pagination-controls  (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente">
+</pagination-controls> -->
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center mt-5">
+    <li class="page-item">
+      <div class="row justify-content-center">
+        <div class="col-2 mt-2">
+          <h6>Pagína</h6>
+        </div>
+        <div class="col-3">
+          <input type="number" class="form-control" [(ngModel)]="page" (ngModelChange)="cargarinformacion(page)">
+        </div>
+        <div class="col-3 mt-2">
+          <h6>of {{this.totalPages}}</h6>
+        </div>
+        <div class="col-1">
+          <li class="page-item">
+            <button type="button" class="btn btn-dark btn-lg" (click)="cargarinformacion(this.page - 1)">
+              <span aria-hidden="true">&laquo;</span>
+            </button>
+
+          </li>
+        </div>
+        <div class="col-1">
+          <li class="page-item">
+            <button type="button" class="btn btn-dark btn-lg" (click)="cargarinformacion(this.page + 1)">
+              <span aria-hidden="true">&raquo;</span>
+            </button>
+
+          </li>
+        </div>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<div class="alert alert-warning alert-dismissible fade show" role="alert" *ngIf="this.mensajeerrorcreafavorito">
+  <strong>{{this.mensajeerrorcreafavorito}}</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+    <div class="col-md-10 col-sm-12">
+      <div class="card">
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let item of this.cargardatos.results ">
+            <div class="row justify-content-around">
+              <div class="col-md-4 col-sm-12">
+                <div class="row">
+
+                  <div class="col-md-2 col-sm-2">
+                    <button type="button" class="btn btn-success" (click)="crearfavorito(item)">+</button>
+                  </div>
+                  <div class="col-md-2 col-sm-2">
+                    <img [src]="item.image" width="50" alt="not found image">
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <h5>{{item.name}}</h5>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-12">
+                <h5>Status: {{item.status}}</h5>
+                <h6>Location: {{item.location.name}}</h6>
+              </div>
+              <div class="col-md-4 col-sm-12">
+                <h5>Species: {{item.species}}</h5>
+                <h6>Id: {{item.id}}</h6>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center mt-5">
+        <li class="page-item">
+          <div class="row justify-content-center">
+            <div class="col-2 mt-2">
+              <h6>Pagína</h6>
+            </div>
+            <div class="col-3">
+              <input type="text" class="form-control" [(ngModel)]="page" (ngModelChange)="cargarinformacion(page)">
+            </div>
+            <div class="col-3 mt-2">
+              <h6>of {{this.totalPages}}</h6>
+            </div>
+            <div class="col-1">
+              <li class="page-item">
+                <button type="button" class="btn btn-dark btn-lg" (click)="cargarinformacion(this.page - 1)">
+                  <span aria-hidden="true">&laquo;</span>
+                </button>
+
+              </li>
+            </div>
+            <div class="col-1">
+              <li class="page-item">
+                <button type="button" class="btn btn-dark btn-lg" (click)="cargarinformacion(this.page + 1)">
+                  <span aria-hidden="true">&raquo;</span>
+                </button>
+
+              </li>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
